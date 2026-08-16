@@ -1,61 +1,99 @@
 ---
-const { pageTitle = "Aura Blog", description = "Embrace Inner Peace: Your Journey to Mental Wellness" } = Astro.props;
+const { 
+  pageTitle = "Aura Blog | Your Journey to Mental Wellness", 
+  description = "Find solace, stories, and strength in every post on Aura Blog.",
+  image = "/Aura-blog/aura-hero.png"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://prakashmishraauthor-alt.github.io/Aura-blog/");
 ---
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Basic Meta Tags -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{pageTitle}</title>
   <meta name="description" content={description} />
-  
-  <!-- Google Fonts: Sacramento, Playfair Display, Plus Jakarta Sans -->
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={image} />
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={image} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/Aura-blog/favicon.svg" />
+
+  <!-- Google Fonts Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
 
   <style is:global>
-  :root {
-    --bg-main: #e2f4f2;
-    --bg-card: #ffffff;
-    --bg-hero: linear-gradient(135deg, #b9e8e2 0%, #d8eff0 50%, #fde2d4 100%);
-    
-    /* DEEP GREEN NAVBAR VARIABLES (LIGHT THEME) */
-    --bg-nav: #0d2823;
-    --nav-text: #e2f4f2;
-    --nav-text-active: #ffffff;
-    --nav-btn-active: #184e44;
-    
-    --text-main: #1e3a38;
-    --text-muted: #5e7e7b;
-    --text-heading: #122b29;
-    --logo-color: #56eead; /* High-contrast bright mint green for deep background */
-    --btn-pill-bg: #bbf1e0;
-    --btn-pill-text: #174238;
-    --card-shadow: 0 10px 30px rgba(18, 43, 41, 0.05);
-    --border-color: rgba(255, 255, 255, 0.6);
-  }
+    :root {
+      --bg-main: #e2f4f2;
+      --bg-card: #ffffff;
+      --bg-hero: linear-gradient(135deg, #b9e8e2 0%, #d8eff0 50%, #fde2d4 100%);
+      --bg-nav: #0d2823;
+      --nav-text: #e2f4f2;
+      --nav-text-active: #ffffff;
+      --nav-btn-active: #184e44;
+      --text-main: #1e3a38;
+      --text-muted: #5e7e7b;
+      --text-heading: #122b29;
+      --logo-color: #56eead;
+      --btn-pill-bg: #bbf1e0;
+      --btn-pill-text: #174238;
+      --card-shadow: 0 10px 30px rgba(18, 43, 41, 0.05);
+      --border-color: rgba(255, 255, 255, 0.6);
+    }
 
-  [data-theme="dark"] {
-    --bg-main: #0d1b1a;
-    --bg-card: #152625;
-    --bg-hero: linear-gradient(135deg, #102d2a 0%, #173835 50%, #2b2220 100%);
+    [data-theme="dark"] {
+      --bg-main: #0d1b1a;
+      --bg-card: #152625;
+      --bg-hero: linear-gradient(135deg, #102d2a 0%, #173835 50%, #2b2220 100%);
+      --bg-nav: #081614;
+      --nav-text: #a3c7c2;
+      --nav-text-active: #ffffff;
+      --nav-btn-active: #12352f;
+      --text-main: #d3e7e4;
+      --text-muted: #8aa8a4;
+      --text-heading: #ffffff;
+      --logo-color: #56eead;
+      --btn-pill-bg: #1d4d42;
+      --btn-pill-text: #bcf3e4;
+      --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      --border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     
-    /* DEEP GREEN NAVBAR VARIABLES (DARK THEME) */
-    --bg-nav: #081614;
-    --nav-text: #a3c7c2;
-    --nav-text-active: #ffffff;
-    --nav-btn-active: #12352f;
-    
-    --text-main: #d3e7e4;
-    --text-muted: #8aa8a4;
-    --text-heading: #ffffff;
-    --logo-color: #56eead;
-    --btn-pill-bg: #1d4d42;
-    --btn-pill-text: #bcf3e4;
-    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    --border-color: rgba(255, 255, 255, 0.08);
-  }
+    /* Responsive Body Padding */
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
+      padding: 1.25rem;
+      overflow-x: hidden;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 0.75rem; }
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; }
   </style>
 </head>
 <body>
