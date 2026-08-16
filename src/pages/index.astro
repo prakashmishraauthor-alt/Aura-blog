@@ -9,28 +9,46 @@ const posts = await getCollection('posts');
   <style>
     .app-container { max-width: 1240px; margin: 0 auto; }
 
-    /* Floating Navbar */
-    .navbar {
-      background: var(--bg-nav);
-      backdrop-filter: blur(16px);
-      border-radius: 50px;
-      padding: 0.6rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-      margin-bottom: -2.5rem;
-      position: relative;
-      z-index: 10;
-      border: 1px solid var(--border-color);
-    }
-    .logo { font-family: 'Sacramento', cursive; font-size: 2.2rem; color: var(--logo-color); font-weight: 700; }
-    .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
-    .nav-link { font-size: 0.9rem; font-weight: 500; color: var(--text-main); }
-    .nav-link.active { background: var(--btn-pill-bg); color: var(--btn-pill-text); padding: 0.4rem 1rem; border-radius: 20px; }
-    .nav-actions { display: flex; align-items: center; gap: 0.75rem; }
-    .btn-join { background: #f99c8d; color: #fff; padding: 0.55rem 1.25rem; border-radius: 25px; font-weight: 600; font-size: 0.85rem; border: none; cursor: pointer; }
-    .theme-btn { background: none; border: none; font-size: 1.1rem; cursor: pointer; padding: 0.4rem; }
+    /* Navbar Styling */
+.navbar {
+  background: var(--bg-nav);
+  backdrop-filter: blur(16px);
+  border-radius: 50px;
+  padding: 0.6rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  margin-bottom: -2.5rem;
+  position: relative;
+  z-index: 10;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.logo { 
+  font-family: 'Sacramento', cursive; 
+  font-size: 2.2rem; 
+  color: var(--logo-color); 
+  font-weight: 700; 
+}
+
+.nav-link { 
+  font-size: 0.9rem; 
+  font-weight: 500; 
+  color: var(--nav-text); 
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+}
+
+.nav-link.active { 
+  background: var(--nav-btn-active); 
+  color: var(--nav-text-active); 
+  padding: 0.4rem 1rem; 
+  border-radius: 20px; 
+}
 
     /* Hero Banner Styling */
     .hero-banner {
