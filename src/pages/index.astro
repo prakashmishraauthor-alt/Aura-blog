@@ -32,15 +32,15 @@ const posts = await getCollection('posts');
     .btn-join { background: #f99c8d; color: #fff; padding: 0.55rem 1.25rem; border-radius: 25px; font-weight: 600; font-size: 0.85rem; border: none; cursor: pointer; }
     .theme-btn { background: none; border: none; font-size: 1.1rem; cursor: pointer; padding: 0.4rem; }
 
-    /* Hero Banner */
+    /* Hero Banner Styling */
     .hero-banner {
       background: var(--bg-hero);
       border-radius: 32px;
-      padding: 5rem 3.5rem 3.5rem;
-      min-height: 400px;
+      padding: 4rem 3.5rem;
+      min-height: 380px;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      align-items: center;
+      justify-content: space-between;
       position: relative;
       overflow: hidden;
       box-shadow: var(--card-shadow);
@@ -50,6 +50,7 @@ const posts = await getCollection('posts');
     .hero-title { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 600; color: var(--text-heading); line-height: 1.2; margin-bottom: 1rem; }
     .hero-sub { font-size: 1rem; color: var(--text-muted); margin-bottom: 1.8rem; }
     .btn-explore { background: var(--btn-pill-bg); color: var(--btn-pill-text); border: none; padding: 0.75rem 1.8rem; border-radius: 25px; font-weight: 600; font-size: 0.9rem; cursor: pointer; }
+    .hero-img { max-width: 42%; height: auto; max-height: 300px; object-fit: contain; border-radius: 20px; z-index: 2; }
     .scroll-indicator { position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); font-size: 0.75rem; color: var(--text-muted); text-align: center; }
 
     /* Layout Sections */
@@ -57,7 +58,6 @@ const posts = await getCollection('posts');
     .section-subtitle { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
     .section-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--text-heading); font-weight: 700; margin-bottom: 1.5rem; }
 
-    /* FIXED: Featured Grid keeps cards fixed width (3 columns max) */
     .featured-grid { 
       display: grid; 
       grid-template-columns: repeat(3, minmax(0, 260px)); 
@@ -94,6 +94,8 @@ const posts = await getCollection('posts');
     @media (max-width: 900px) {
       .content-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
+      .hero-banner { flex-direction: column; text-align: center; }
+      .hero-img { max-width: 80%; margin-top: 1.5rem; }
     }
   </style>
 
@@ -116,28 +118,24 @@ const posts = await getCollection('posts');
       </div>
     </header>
 
-   <section class="hero-banner">
-  <div class="hero-content">
-    <h1 class="hero-title">Embrace Inner Peace: Your Journey to Mental Wellness</h1>
-    <p class="hero-sub">Find solace, stories, and strength in every post.</p>
-    <button class="btn-explore">Start Exploring</button>
-  </div>
+    <section class="hero-banner">
+      <div class="hero-content">
+        <h1 class="hero-title">Embrace Inner Peace: Your Journey to Mental Wellness</h1>
+        <p class="hero-sub">Find solace, stories, and strength in every post.</p>
+        <button class="btn-explore">Start Exploring</button>
+      </div>
 
-  <!-- ADD OR UPDATE THIS IMAGE TAG -->
-  <img 
-    src="<img 
-  src="/Aura-blog/aura-hero.png" 
-  alt="Hero Banner" 
-  class="hero-img" 
-/>" 
-    alt="Hero Banner" 
-    class="hero-img" 
-  />
+      <!-- CLEAN HERO IMAGE TAG -->
+      <img 
+        src="/Aura-blog/aura-hero.png" 
+        alt="Hero Banner" 
+        class="hero-img" 
+      />
 
-  <div class="scroll-indicator">
-    Scroll Down<br />∨
-  </div>
-</section>
+      <div class="scroll-indicator">
+        Scroll Down<br />∨
+      </div>
+    </section>
 
     <div class="content-grid">
       <section>
