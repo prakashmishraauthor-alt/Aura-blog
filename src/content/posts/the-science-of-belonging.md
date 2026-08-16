@@ -4,7 +4,7 @@ title: "The Science of Belonging"
 description: "The root of our modern epidemic of despair is social: why local community structures are vital for global mental well-being."
 pubDate: 2026-08-16
 readTime: "5 min read" # Or a number, depending on your schema
-authorAvatar: "/images/avatar.png" # Path to the image
+authorAvatar: "public/science-of-belonging.jpg" # Path to the image
 ---
 
 The statistics surrounding the global mental health crisis are staggering. More than 1 billion people worldwide are currently living with a mental health condition. In a single year, we lose over 700,000 lives to suicide, while an estimated 9 in 10 individuals suffering from depression are unable to access the care they need. This crisis is not just a human tragedy; it is an economic one, costing the global economy over $2 trillion annually.
