@@ -147,16 +147,82 @@ const posts = await getCollection('posts');
     .popular-tags { display: flex; gap: 0.35rem; align-items: center; margin-top: 0.25rem; }
     .mini-author { font-size: 0.75rem; color: var(--text-muted); }
 
-    @media (max-width: 1024px) {
-      .featured-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+   /* ==========================================
+     MOBILE & RESPONSIVE OPTIMIZATIONS (ADD THIS)
+     ========================================== */
+
+  /* Prevents horizontal overflow on all elements */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  /* Make containers fit mobile screens smoothly */
+  .app-container, 
+  .navbar, 
+  .hero-banner, 
+  .content-grid {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Responsive text sizes for Hero */
+  .hero-title {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    word-break: break-word;
+  }
+
+  /* Grid behavior on mobile screen sizes */
+  .featured-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  /* Mobile Layout Rules (< 900px) */
+  @media (max-width: 900px) {
+    /* Stack side-by-side content vertically */
+    .content-grid {
+      grid-template-columns: 1fr;
     }
 
-    @media (max-width: 900px) {
-      .content-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hero-banner { flex-direction: column; text-align: center; }
-      .hero-img { max-width: 80%; margin-top: 1.5rem; }
+    /* Hide desktop navigation links on small screens */
+    .nav-links {
+      display: none;
     }
+
+    /* Stack hero text and hero image vertically */
+    .hero-banner {
+      flex-direction: column;
+      padding: 4rem 1.5rem 2.5rem;
+      text-align: center;
+    }
+
+    .hero-img {
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+      margin-top: 1rem;
+    }
+
+    .scroll-indicator {
+      display: none;
+    }
+  }
+
+  /* Extra small screens (< 480px) */
+  @media (max-width: 480px) {
+    .navbar {
+      padding: 0.6rem 1rem;
+      border-radius: 30px;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+    }
+
+    .btn-join {
+      padding: 0.45rem 0.85rem;
+      font-size: 0.75rem;
+    }
+  }
   </style>
 
   <div class="app-container">
