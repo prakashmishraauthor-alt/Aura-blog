@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<BaseLayout pageTitle={`${post.data.title} | Aura`}>
+  <article style="max-width: 800px; margin: 3rem auto; padding: 0 1.5rem;">
+    <span style="color: var(--accent-color); font-weight: 600; text-transform: uppercase;">
+      {post.data.category.replace('-', ' ')}
+    </span>
+    <h1 style="font-size: 2.5rem; margin: 1rem 0; line-height: 1.2;">{post.data.title}</h1>
+    
+    <div style="display: flex; gap: 1rem; align-items: center; margin: 1.5rem 0 2.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+      <img src={post.data.authorAvatar} style="width: 44px; height: 44px; border-radius: 50%;" />
+      <div>
+        <strong>{post.data.authorName}</strong>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">{post.data.date} • {post.data.readTime}</p>
+      </div>
+    </div>
+
+    <div style="font-size: 1.1rem; line-height: 1.8;">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
