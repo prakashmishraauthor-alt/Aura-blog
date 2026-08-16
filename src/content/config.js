@@ -1,19 +1,16 @@
 import { defineCollection, z } from 'astro:content';
 
-const postsCollection = defineCollection({
+const posts = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    date: z.string(),
-    category: z.string(),
-    readTime: z.string(),
-    excerpt: z.string(),
-    thumb: z.string(),
-    authorName: z.string(),
-    authorAvatar: z.string(),
+    // Make them optional:
+    readTime: z.string().optional(), // or z.number().optional()
+    authorAvatar: z.string().optional(),
+    
+    // OR set a default value:
+    // authorAvatar: z.string().default('/default-avatar.png'),
   }),
 });
 
-export const collections = {
-  posts: postsCollection,
-};
+export const collections = { posts };
